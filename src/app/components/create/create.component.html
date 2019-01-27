@@ -1,0 +1,56 @@
+<marquee behavior="scroll" direction="left"><strong>ברוכים הבאים לקרן ספרים!</strong> </marquee>
+
+
+<br><br>
+
+<section class="container">
+
+  <div align="right" class="panel-heading">
+    {{ title }}
+  </div>
+  <div align="right" class="panel-body">
+    <form #addbookform="ngForm" (ngSubmit)="addBook(addbookform)">
+
+
+      <div class="form-group">
+        <label> :שם הספר</label>
+        <input type="text" class="form-control" id="form9" name="name" [(ngModel)]="book.name" placeholder="book Name">
+      </div>
+
+      <div class="form-group">
+        <label> :שם המחבר</label>
+        <input type="text" class="form-control" id="form76" name="author" [(ngModel)]="book.author" placeholder="book author">
+      </div>
+
+      <div class="form-group">
+        <label> :קטגוריה </label>
+        <input type="text" class="form-control" id="form10" name="category" [(ngModel)]="book.category" placeholder="book Category">
+      </div>
+
+      <div class="form-group">
+        <label> :מחיר </label>
+        <input type="number" id="form41" name="price" class="form-control" [(ngModel)]="book.price" placeholder="book Price">
+      </div>
+
+
+      <div *ngIf="book" class="progress">
+        <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" attr.aria-valuenow="{{progress.percentage}}"
+          aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress.percentage+'%'}">
+          {{progress.percentage}}%</div>
+      </div>
+      <div class="mb-3">
+        <label>:תמונת הספר</label>
+        <input type="file" id="form91" class="form-control" (change)="selectFile($event)">
+
+      </div>
+
+
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary">הוסף ספר</button>
+      </div>
+    </form>
+  </div>
+
+
+</section>
+<ng2-toasty></ng2-toasty>

@@ -1,0 +1,46 @@
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
+
+import { BookService } from './../../services/book.service';
+
+@Component({
+  selector: 'app-edit',
+  templateUrl: './edit.component.html',
+  styleUrls: ['./edit.component.css']
+})
+export class EditComponent implements OnInit {
+
+  book: any;
+  angForm: FormGroup;
+  title = 'Edit book';
+  constructor(private route: ActivatedRoute, private router: Router, private service: BookService, private fb: FormBuilder) {
+    this.createForm();
+   }
+
+  createForm() {
+    this.angForm = this.fb.group({
+      name: ['', Validators.required ],
+      author: ['', Validators.required ],
+      category: ['', Validators.required ],
+      price: ['', Validators.required ]
+       });
+  }
+
+  updateBook(name,author,category, price,status) {
+    this.route.params.subscribe(params => {
+      console.log(params['key']);    
+
+  //this.service.updateBook(this.book.key,name,author, category,price, params['id']);
+
+    this.router.navigate(['index']);
+  });
+}
+
+  ngOnInit() {
+    this.route.params.subscribe(params => {
+      console.log(params['id']);    
+      this.book = this.service.editBook(params['id'])
+    });
+  }
+}

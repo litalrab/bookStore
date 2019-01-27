@@ -1,0 +1,80 @@
+<br>
+<div class="container" *ngIf="favoruiteProducts.length > 0">
+  <div class="row">
+    <!-- List of Products -->
+    <div class="col-sm-4" *ngFor="let book of favoruiteProducts">
+      <div class="item">
+        <div class=" mb-r">
+
+          <!--Card-->
+          <div class="card card-cascade wider">
+
+            <!--Card image-->
+            <a [routerLink]="['/books/book', book.$key ]">
+
+              <div class="view overlay hm-white-slight">
+                <img src="{{book.url}}" class="img-fluid" alt="" width="360px" height="640px">
+                <a>
+                  <div class="mask waves-effect waves-light" mdbRippleRadius></div>
+                </a>
+              </div>
+            </a>
+
+            <!--/.Card image-->
+
+            <!--Card content-->
+            <div class="card-body text-center no-padding  ">
+              <!--Category & Title-->
+              <a class="text-muted">
+                <h5>{{ book.author }}</h5>
+              </a>
+              <h5 class="card-title">
+                <strong>
+                  <a [routerLink]="['/books/book', book.$key]">{{ book.name }}</a>
+                </strong>
+              </h5>
+
+              <!--category-->
+              <p class="card-text">{{ book.category }}
+              </p>
+
+              <!--Card footer-->
+              <div class="card-footer">
+                <span class="left">{{ book.price| currency:'ILS':true }}</span>
+                <span class="right">
+
+                  <a placement="top" mdbTooltip="הסר ספר מרשימת המשאלות" container="body" (click)="removeFavourite(book)">
+                    <i class="fa fa-trash"></i>
+                  </a>
+                  <a placement="top" mdbTooltip="הוסף לעגלה" container="body" (click)="addProductToCart(book, 1)">
+                    <i class="fa fa-shopping-cart"></i>
+                  </a>
+                  <a placement="top" mdbTooltip="הסר ספר מעגלה" container="body" *ngIf="productInCart(book) | async"
+                    (click)="removeProductFromCart(book, 1)">
+                    <i class="fa fa-trash"></i>
+                  </a>
+                </span>
+              </div>
+
+            </div>
+            <!--/.Card content-->
+
+          </div>
+          <!--/.Card-->
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="small-12 columns">
+    <button type="button" class="btn-warning btn-sm expanded js-btn-empty-WishList"
+     (click)="emptyWishList()" routerLink ="/home"[attr.disabled]="navbarFavProdCount === 0 ? true : null">
+      רוקן את רשימת המשאלות שלי
+    </button>
+  </div>
+</div>
+
+<div class="container" *ngIf="favoruiteProducts.length === 0">
+
+  <app-no-products-found [title]="messageTitle" [description]="messageDescription"></app-no-products-found>
+</div>

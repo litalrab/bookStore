@@ -1,0 +1,38 @@
+<div class="row1">
+  <div class="small-12 columns">
+    <h3>
+     סל הקניות שלי
+    </h3>
+  </div>
+<br/>
+<div class="row1">
+  <div class="small-12 columns">
+    <h5>
+      Sub Total ({{itemCount}} items):
+      <span class="text--red text--bold js-cart-total">{{(cart | async).grossTotal | currency:'ILS':true}}</span>
+    </h5>
+  </div>
+
+<br/>
+<div class="row1">
+  <div class="small-12 columns">
+    <a class="btn-success btn-lg expanded"
+       [attr.disabled]="itemCount === 0 ? true : null"
+       routerLink="/checkout">לחץ ביצוע הזמנה </a>
+  </div>
+
+<div class="row1">
+  <div class="small-12 columns text-center">
+    או
+  </div>
+
+<div class="row1">
+  <div class="small-12 columns">
+    <button type="button"
+            class="btn-warning btn-sm expanded js-btn-empty-cart"
+            (click)="emptyCart()"
+            [attr.disabled]="itemCount === 0 ? true : null">
+      רוקן את סל הקניות שלי
+    </button>
+  </div>
+</div></div></div></div></div>

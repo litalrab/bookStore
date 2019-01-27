@@ -1,0 +1,230 @@
+/* show the collapse when navbar toggle is checked */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.1.3/flatly/bootstrap.css");
+body {
+  padding-top: 0px;
+}
+footer {
+ // padding-left: 15px;
+  padding-right: 0px;
+}
+
+.navbar-toggler-icon{
+    position: absolute;
+    /* top right corner of the sidebar */
+    top: 30px;
+    left: 150px;
+
+
+
+
+}
+.navbar{
+
+    background: linear-gradient(180deg, #FC466B 0%, #3F5EFB 100%);
+
+}
+/*
+ * Off Canvas
+ * --------------------------------------------------
+ */
+@media only screen and (max-width: 415px) {
+    #sidebarMenu {
+      //  padding-right: 25px;
+        height: 100%;
+        position:fixed;
+        overflow-y:auto;
+        overflow-x:hidden;
+        padding-top:1px;
+    }
+    #dismiss {
+        //display: none;
+    
+        width: 35px;
+        height: 35px;
+        position: absolute;
+        /* top right corner of the sidebar */
+        top: 130px;
+        right: 10px;
+        z-index: 999;
+    
+    }
+
+}
+.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+.fa-heart {
+  color: #cc6969;
+}
+/* standard navbar */
+@media (min-width: 768px) {
+    #dismiss {
+        display: none;
+    
+        width: 35px;
+        height: 35px;
+        position: absolute;
+        /* top right corner of the sidebar */
+        top: 10px;
+        right: 10px;
+        z-index: 99;
+    
+    }
+  }
+
+/*
+       <div id="dismiss">
+              <i class="fa fa-arrow-circle-up" data-toggle="collapse" data-target=".navbar-collapse.show" size="5x" ></i>
+            </div> 
+*/
+#navbarDiv {
+    margin-top:85px;
+    display: table-cell;
+      background: linear-gradient(180deg, #FC466B 0%, #3F5EFB 100%);
+  }
+ //display: block;
+#collapsingNavbarXs {
+  //  top:110px;
+  //  display: table-cell;
+  //display: block;
+   // position:fixed;
+   position: relative;
+       padding-top: 0;
+    //  background:rgb(248, 152, 171)
+  }
+/*
+.container{
+  position:absolute;
+  z-index: -1   ;
+
+
+}
+*/
+
+ /* side bar */
+
+@import url('https://fonts.googleapis.com/css?family=Varela+Round');
+html, body {
+    overflow-x: hidden;
+    height: 100%;
+}
+body {
+    background: #fff;
+    padding: 0;
+    margin: 0;
+    font-family: 'Varela Round', sans-serif;
+}
+
+
+#sidebarMenu {
+    /* top layer */
+    z-index: 9999;
+  position:fixed;
+  overflow:auto;
+  height: 100vh;
+  text-align: right;
+    right: 0;
+    width: 180px;
+    margin-top:-25px;
+    transform: translateX(+250px);
+    transition: transform 250ms ease-in-out;
+    background: linear-gradient(180deg, #FC466B 0%, #3F5EFB 100%);
+    margin-top:1px;
+
+}
+.sidebarMenuInner{
+    margin:0;
+    padding:0;
+    border-top: 1px solid rgba(255, 255, 255, 0.10);
+}
+.sidebarMenuInner li{
+    list-style: none;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 20px;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+}
+.sidebarMenuInner li span{
+    display: block;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.50);
+}
+.sidebarMenuInner li a{
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+}
+input[type="checkbox"]:checked ~ #sidebarMenu {
+    transform: translateX(0);
+}
+
+input[type=checkbox] {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    display: none;
+}
+.sidebarIconToggle {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    cursor: pointer;
+    position: absolute;
+   /* top layer */
+   z-index: 99999;
+    height: 100%;
+    width: 100%;
+    top: 35px;
+    right: 35px;///
+    height: 22px;
+    width: 22px;
+}
+.spinner {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background-color: #fff;
+}
+.horizontal {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    position: relative;
+    float: right;
+    margin-top: 3px;
+}
+.diagonal.part-1 {
+    position: relative;
+    transition: all 0.3s;
+    box-sizing: border-box;
+    float: right;
+}
+.diagonal.part-2 {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    position: relative;
+    float: right;
+    margin-top: 3px;
+}
+input[type=checkbox]:checked ~ .sidebarIconToggle > .horizontal {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    opacity: 0;
+}
+input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-1 {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    transform: rotate(135deg);
+    margin-top: 8px;
+}
+input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    transform: rotate(-135deg);
+    margin-top: -9px;
+}

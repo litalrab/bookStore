@@ -1,0 +1,26 @@
+<h1 align="center">קולנוע</h1>
+
+<mat-grid-list cols="2" rowHeight="250px">
+
+    <mat-grid-tile *ngFor="let book of books| filter : 'קולנוע': 'category'" cols="2">
+      <mat-card>
+        <mat-card-subtitle align="center"> <strong> שם הספר : </strong>{{book.name}}</mat-card-subtitle>
+        <mat-card-subtitle align="center"> <strong> שם הסופר :</strong>{{book.author}}</mat-card-subtitle>
+        <mat-card-subtitle align="center"> <strong> מצב הספר :</strong>{{book.category}}</mat-card-subtitle>
+        <mat-card-subtitle align="center">{{book.price}} <strong> :מחיר</strong></mat-card-subtitle>
+
+    <br>
+    <mat-grid-tile-footer>
+
+        <a [routerLink]="['/edit', book._id]" class="btn btn-primary">Edit</a>
+        <button (click)="deleteBook(book._id)"  class="btn btn-danger">Delete</button>
+  
+      </mat-grid-tile-footer>
+
+      </mat-card>
+    </mat-grid-tile>
+    </mat-grid-list>
+
+    <br><br>
+
+    

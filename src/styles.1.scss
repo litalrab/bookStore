@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,700');
+@import url("https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.1.3/flatly/bootstrap.css");
+
+body {
+    background: url(b72d33a8d6532b58e9b3d4aee554f2ed.jpg);
+    padding: 3em;
+    font-family: 'Raleway', 'Arial';
+    color:rgb(31, 22, 22);
+}
+ul {
+    list-style-type:none;
+    margin:0 0 2em 0;
+    padding:0;
+}
+ul li {
+    display:inline;
+    margin-right: 30px;
+}
+ul li a {
+    font-size: 1.5em;
+}
+a {
+    color:rgb(19, 17, 17);
+    text-decoration:none;
+}
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 70;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color:rgb(190, 27, 168);
+    font-size: 2.5em;
+    font-family:  'Rouge Script';
+    height:30px;
+    padding-top:0px;
+  
+  }
+
+  body{
+
+
+    font-size: 2.5em;
+
+  }
