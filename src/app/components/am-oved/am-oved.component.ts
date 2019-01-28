@@ -12,7 +12,7 @@ import { Book } from '../../Book';
   styleUrls: ['./am-oved.component.scss']
 })
 export class AmOvedComponent implements OnInit {
-  messageTitle = 'עם עובד';
+  categoryTitle = 'עם עובד';
 
 
   constructor() {}

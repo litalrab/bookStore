@@ -12,8 +12,7 @@ import { Book } from '../../Book';
   styleUrls: ['./book-dis.component.scss']
 })
 export class BookDisComponent implements OnInit {
-  @Input("cat") cat: String;
-
+  @Input("category") category: String;
   p:any;
   searchText:any;
   books: any;
