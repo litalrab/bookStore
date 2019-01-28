@@ -35,8 +35,10 @@ p {
 }
 .container-fluid{
 //  max-width: 800px;
-  margin: 0 auto;
-  padding-top: 0.5cm;
+  // margin: 0 auto;
+  // padding-top: 0.5cm;
+  width: 100vw;
+  margin: 0%;  
 }
 
 .text--red {
@@ -49,5 +51,6 @@ p {
   
  .body{
 background-color: coral;
-
+margin: 0;
+height: 100%;
   }

@@ -10,7 +10,7 @@
     <div class="col-md-4">
 
       <h1 align="center"> <img align="left" src="assets/img/ספרים-חודש.jpg" alt="image" Height="100px" width="100px">
-        {{cat}}</h1>
+        {{category}}</h1>
     </div>
 
     <!-- Search form -->
@@ -31,7 +31,7 @@
 
   <div class="row   ">
     <!-- List of Products -->
-    <div class=" mb-2 mr-3" *ngFor='let book of books| filter : cat : "category" | filter : searchText: "name" ' cols="6">
+    <div class=" mb-2 mr-3" *ngFor='let book of books| filter : category : "category" | filter : searchText: "name" ' cols="6">
       <div class="item">
         <div class=" mb-r-3 mr-3">
           <!--Card-->
