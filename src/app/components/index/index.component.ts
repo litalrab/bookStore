@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+
 import { BookService } from './../../services/book.service';
 import { Book } from '../../Book';
 @Component({
@@ -7,14 +9,22 @@ import { Book } from '../../Book';
   styleUrls: ['./index.component.css']
 })
 export class IndexComponent implements OnInit {
-  p:any;
+  p:number;
   searchText:any;
   public books: any;
   total: number=0;
-  constructor( private service: BookService) {}
+  constructor( private route: ActivatedRoute, private router: Router,private service: BookService) {}
 
   ngOnInit() {
     this.books =this.getBooks('/books');
+    this.route
+      .queryParams
+      .subscribe(params => {
+        // Defaults to 0 if no query param provided.
+        this.p = +params['p'] || 0;
+
+        console.log('Query param page: ', this.p);
+      });
   }
 
   getBooks(path) {

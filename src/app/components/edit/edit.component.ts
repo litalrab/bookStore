@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+// import { Component, OnInit } from '@angular/core';
+
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm,FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { Book } from '../../Book';
@@ -13,7 +15,7 @@ import { BookService } from './../../services/book.service';
 export class EditComponent implements OnInit {
   selectedFiles: FileList;
   progress: { percentage: number } = { percentage: 0 };
-
+page:number;
   book: any;
   angForm: FormGroup;
   title = 'Edit book';
@@ -65,17 +67,30 @@ export class EditComponent implements OnInit {
       console.log(params['key']);    
 
     this.BookService.updateBook(bookform.value, params['id']);
-
-    this.router.navigate(['index']);
+  // window.history.go(-1);
+    this.router.navigate(['index'],{ queryParams: { p: this.page }});
   });
   this.book = new Book(undefined);
+  //this.router.navigate(['index']);
+  // this.router.navigate()
 
 }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      console.log(params['id']);    
+      console.log(params['id']);  
+      // console.log(params['p']);    
+  
       this.book = this.BookService.editBook(params['id'])
+      // this.page=params['p']
+    });
+    this.route
+    .queryParams
+    .subscribe(params => {
+      // Defaults to 0 if no query param provided.
+      this.page = +params['page'] || 0;
+
+      console.log('Query param page: ', this.page,+params['p'] ,+params['page'] );
     });
   }
 }
