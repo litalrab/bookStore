@@ -6,6 +6,7 @@ import { ShoppingCartService } from "../../services/shopping-cart.service";
 import { Observable } from "rxjs/Observable";
 import { Subscription } from "rxjs/Subscription";
 import { ProductsDataService } from "../../services/products.service";
+import { UserService } from "../../services/user.service";
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -16,11 +17,15 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   public books;
   public cart: Observable<ShoppingCart>;
   public itemCount: number;
+  public user;
 
   private cartSubscription: Subscription;
 
-  public constructor(private productsService: ProductsDataService,private BookService: BookService,
+  public constructor(private productsService: ProductsDataService,private BookService: BookService,                     private userService: UserService,
+    private UserService: UserService,
+
                      private shoppingCartService: ShoppingCartService) {
+                      //  user=userService.c
   }
 
   public emptyCart(): void {

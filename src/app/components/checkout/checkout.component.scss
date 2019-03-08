@@ -3,5 +3,60 @@
       max-height: 200px;
     }
   }
+  .book_image {
+    max-height: 200px;
+  }
+  // -webkit-box-sizing: border-box;
+  
+  #number {
+    width: 3em;
+  }
+  .row {
+    max-width: 98%;
+  }
+  body{
+    direction: rtl;
+    color:#6C5B7B;
 
- 
+  }
+  .fa-trash:before {
+        font-size: 60px;
+    height: 80%;
+    position: absolute;
+    padding-top: 45px;
+
+}
+   legend {
+    box-shadow:0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+
+    background-color: pink;
+    color:#355C7D;
+    padding: 3px 6px;
+}
+  .header
+  {
+    box-shadow:0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    border: 5px ;
+    border-radius: 15% 15% 15% 0%;
+    box-shadow: 10px gray;
+    height: 40px;
+    background-color: palevioletred;
+    color:burlywood;
+  }
+  fieldset { 
+    display: block;
+    margin-left: 2px;
+    margin-right: 2px;
+    padding-top: 0.35em;
+    padding-bottom: 0.625em;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    border: 2px groove gray !important;
+  }
+//   * {
+//     margin: 0;
+//     padding: 0;
+//     border: none;
+//     outline: none;
+//     /* font-weight: inherit; */
+// }

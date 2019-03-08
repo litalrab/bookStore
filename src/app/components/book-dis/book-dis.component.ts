@@ -26,10 +26,13 @@ export class BookDisComponent implements OnInit {
   }
 
   getBooks() {
-    this.service.getBooks('/books').subscribe(res => {
-      this.books = res;
-    });
+    this.books =this.service.getBooks('/books');
   }
+  // getBooks() {
+  //   this.service.getBooks('/books').subscribe(res => {
+  //     this.books = res;
+  //   });
+  // }
   deleteBook(id) {
 
   }
@@ -44,6 +47,8 @@ export class BookDisComponent implements OnInit {
     this.shoppingCartService.addItem(book, -1);
   }
   public productInCart(book: Book): boolean {
+    console.log(book);
+
     return Observable.create((obs: Observer<boolean>) => {
       const sub = this.shoppingCartService
                       .get()

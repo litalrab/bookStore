@@ -9,6 +9,8 @@ import * as firebase from 'firebase';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Book } from '../Book'
 
+const BOOKS_KEY = "books";
+
 @Injectable()
 export class BookService {
 
@@ -94,12 +96,66 @@ export class BookService {
     console.log('Success');
     console.log(key);
   }
+  // getBooks() {
+  //   this.service.getBooks('/books').subscribe(res => {
+  //     this.books = res;
+  //   });
+  // }
+  getFromLocalSstorage() {
+    // const a:  Observable<any[]>;
+    // console.log(JSON.parse(localStorage.getItem(BOOKS_KEY) ));
+    
+    if(JSON.parse(localStorage.getItem(BOOKS_KEY)) === null)
+    {
+      console.log("books" );
 
-  getBooks(path): Observable<any[]> {
-    return this.items;//
+      this.items.subscribe(res => {
+        this.saveToLocalSstorage(res);
+          // this.books = res;
+          const books:  Observable<any[]> = JSON.parse(localStorage.getItem(BOOKS_KEY)) ;
+          console.log(books );
+        
+          // return localStorage.getItem(JSON.stringify(BOOKS_KEY)) ? localStorage.getItem(JSON.stringify(BOOKS_KEY)):[];
+          return books;
+        });
+      
+      // this.saveToLocalSstorage(this.items);
+          // return this.items;//
+
+
+    }
+    return JSON.parse(localStorage.getItem(BOOKS_KEY));
+    // return this.getFromLocalSstorage();
+    //    return this.db.list(path).valueChanges();
+    
+  }
+  saveToLocalSstorage(books) {
+    // let a:  Observable<any[]>;
+      localStorage.setItem(BOOKS_KEY,JSON.stringify(books) );
+  }
+  getBooksFromFire(path): Observable<any[]> {
+// localStorage.clear();
+   return this.items;//
+  // return this.getFromLocalSstorage();
     //   return this.db.list(path).valueChanges();
   }
+  getBooks(path){
 
+    // console.log("books" );
+
+    // return this.items;//
+     return this.getFromLocalSstorage();
+
+    // if(this.getFromLocalSstorage() === [])
+    // {
+    //   this.saveToLocalSstorage(this.items);
+    //       // return this.items;//
+
+
+    // }
+    // return this.getFromLocalSstorage();
+     //   return this.db.list(path).valueChanges();
+   }
   editBook(id) {
     const uri = 'http://localhost:4000/Books/edit/' + id;
     return this
@@ -139,7 +195,7 @@ export class BookService {
             //  this.createProduct(Book);
             console.log(downloadUrl)
             //return this.itemsRef.update(id,   { 'url': downloadURL });
-             return this.itemsRef.update(id,   Book);
+            return this.itemsRef.update(id, Book);
 
 
           });

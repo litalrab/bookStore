@@ -6,13 +6,14 @@ import { Observable } from "rxjs/Observable";
 import { Observer } from "rxjs/Observer";
 import { Book } from '../../Book';
 
+
 @Component({
-  selector: 'app-study',
-  templateUrl: './study.component.html',
-  styleUrls: ['./study.component.scss']
+  selector: 'app-body',
+  templateUrl: './body.component.html',
+  styleUrls: ['./body.component.scss']
 })
-export class StudyComponent implements OnInit {
-  categoryTitle = 'עיון';
+export class BodyComponent implements OnInit {
+  categoryTitle = 'גוף ונפש';
 
   constructor(private http: HttpClient, private service: BookService,
     private shoppingCartService: ShoppingCartService) {}

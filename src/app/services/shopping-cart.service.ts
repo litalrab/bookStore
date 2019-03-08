@@ -19,6 +19,8 @@ export class ShoppingCartService {
   private subscriptionObservable: Observable<ShoppingCart>;
   private subscribers: Array<Observer<ShoppingCart>> = new Array<Observer<ShoppingCart>>();
   private books: Book[];
+  // private books: any[]|String;
+
   private deliveryOptions: DeliveryOption[];
   itemCount = 0;
   navbarFavProdCount = 0;
@@ -32,7 +34,13 @@ export class ShoppingCartService {
     private deliveryOptionsService: DeliveryOptionsDataService) {
     this.storage = this.storageService.get();
     // this.productService.all().subscribe((books) => this.books = books);
-    this.BookService.getBooks('/books').subscribe((books) => this.books = books);
+    this.BookService.getBooksFromFire('/books').subscribe((books) => this.books = books);
+  
+    // this.BookService.getBooks('/books').subscribe((books) => this.books = books);
+    // getBooks() {
+      // this.books =this.BookService.getBooks('/books');
+  
+   
     //this.books=BookService.getBooks('/books');
     this.deliveryOptionsService.all().subscribe((options) => this.deliveryOptions = options);
     this.itemCount = this.getCount();
@@ -56,10 +64,11 @@ export class ShoppingCartService {
     return Number(this.storage.getItem("itemCount"));
   }
 
-  public addItem(book: Book, quantity: number): void {
+  public addItem(book, quantity: number): void {
+    console.log(book);
 
     const cart = this.retrieve();
-    let item = cart.items.find((p) => p.bookId === book.id);
+    let item = cart.items.find((p) => p.bookId === book.id)|| cart.items.find((p) => p.bookId === book.bookId) ;
     if (item === undefined) {
       console.log(book.id);
 
@@ -136,6 +145,7 @@ export class ShoppingCartService {
   public retrieve(): ShoppingCart {
     const cart = new ShoppingCart();
     const storedCart = this.storage.getItem(CART_KEY);
+    console.log(storedCart);
     if (storedCart) {
       cart.updateFrom(JSON.parse(storedCart));
     }

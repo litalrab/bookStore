@@ -28,8 +28,19 @@ import { LoginComponent } from './components/login/login.component';
 import { TranslateComponent } from './components/translate/translate.component';
 import { EnglishComponent } from './components/english/english.component';
 import { FavouriteProductsComponent } from './components/favourite-products/favourite-products.component';
-
+import { ReligigionComponent } from './components/religigion/religigion.component';
+import { HumorComponent } from './components/humor/humor.component';
+import { BodyComponent } from './components/body/body.component';
 export const appRoutes: Routes = [
+  { path: 'body',
+  component: BodyComponent
+  },
+  { path: 'religigion',
+  component: ReligigionComponent
+  },
+  { path: 'humor',
+  component: HumorComponent
+  },
   { path: 'favourite-products',
   component: FavouriteProductsComponent
   },

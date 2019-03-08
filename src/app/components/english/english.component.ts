@@ -27,12 +27,14 @@ export class EnglishComponent implements OnInit {
   ngOnInit() {
     this.getBooks();
   }
-
   getBooks() {
-    this.service.getBooks('/books').subscribe(res => {
-      this.books = res;
-    });
+    this.books =this.service.getBooks('/books');
   }
+  // getBooks() {
+  //   this.service.getBooks('/books').subscribe(res => {
+  //     this.books = res;
+  //   });
+  // }
   deleteBook(id) {
 
   }

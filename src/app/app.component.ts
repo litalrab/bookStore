@@ -18,7 +18,14 @@ export class AppComponent implements OnInit  {
     private router: Router,
     public ShoppingCartService: ShoppingCartService  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+  
+  }
+  navbarOpen = false;
+ 
+  toggleNavbar() {
+    this.navbarOpen = !this.navbarOpen;
+  }
   logout() {
     this.authService.logout();
     this.router.navigate(["/"]);

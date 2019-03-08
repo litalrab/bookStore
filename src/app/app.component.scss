@@ -14,9 +14,6 @@ footer {
     top: 30px;
     left: 150px;
 
-
-
-
 }
 .navbar{
 
@@ -107,13 +104,13 @@ footer {
 
 @import url('https://fonts.googleapis.com/css?family=Varela+Round');
 html, body {
-    overflow-x: hidden;
+    // overflow-x: hidden;
     height: 100%;
 }
 body {
     background: #fff;
-    padding: 0;
-    margin: 0;
+    padding: 0px;
+    margin: 0px;
     font-family: 'Varela Round', sans-serif;
 }
 
@@ -121,17 +118,17 @@ body {
 #sidebarMenu {
     /* top layer */
     z-index: 9999;
-  position:fixed;
-  overflow:auto;
-  height: 100vh;
-  text-align: right;
+    position:fixed;
+    overflow:auto;
+    height: calc(100% - 78px);
+    text-align: right;
     right: 0;
     width: 180px;
     margin-top:-25px;
     transform: translateX(+250px);
     transition: transform 250ms ease-in-out;
     background: linear-gradient(180deg, #FC466B 0%, #3F5EFB 100%);
-    margin-top:1px;
+    margin-top:0.2px;
 
 }
 .sidebarMenuInner{
@@ -176,7 +173,7 @@ input[type=checkbox] {
     position: absolute;
    /* top layer */
    z-index: 99999;
-    height: 100%;
+    
     width: 100%;
     top: 35px;
     right: 35px;///
@@ -227,4 +224,47 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
     box-sizing: border-box;
     transform: rotate(-135deg);
     margin-top: -9px;
+}
+
+/* responsive nav stacked liked 3.x */
+@media(max-width:992px) {
+    #nav1.navbar .navbar-brand {
+        float:none;
+        display: block;
+    }
+    #nav1.navbar .navbar-nav>.nav-item {
+        float: none;
+        margin-left: .1rem;
+    }
+    #nav1.navbar .navbar-nav {
+        float:none !important;
+    }
+}
+
+@media(max-width:768px) {
+    #nav2.navbar .navbar-brand {
+        float:none;
+        display: block;
+    }
+    #nav2.navbar .navbar-nav>.nav-item {
+        float: none;
+        margin-left: .1rem;
+    }
+    #nav2.navbar .navbar-nav {
+        float:none !important;
+    }
+}
+
+@media(max-width:544px) {
+    #nav3.navbar .navbar-brand {
+        float:none;
+        display: block;
+    }
+    #nav3.navbar .navbar-nav>.nav-item {
+        float: none;
+        margin-left: .1rem;
+    }
+    #nav3.navbar .navbar-nav {
+        float:none !important;
+    }
 }

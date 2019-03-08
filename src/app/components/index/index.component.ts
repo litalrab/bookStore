@@ -28,7 +28,7 @@ export class IndexComponent implements OnInit {
   }
 
   getBooks(path) {
-    return this.service.getBooks(path);
+    return this.service.getBooksFromFire(path);
   }
 
   deleteBook(book: any) {

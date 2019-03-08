@@ -61,6 +61,9 @@ import { EnglishComponent } from './components/english/english.component';
 import { FavouriteProductsComponent } from './components/favourite-products/favourite-products.component';
 import { NoProductsFoundComponent } from './components/no-products-found/no-products-found.component';
 import { BookDisComponent } from './components/book-dis/book-dis.component';
+import { ReligigionComponent } from './components/religigion/religigion.component';
+import { HumorComponent } from './components/humor/humor.component';
+import { BodyComponent } from './components/body/body.component';
 
 
 @NgModule({
@@ -98,7 +101,10 @@ import { BookDisComponent } from './components/book-dis/book-dis.component';
     EnglishComponent,
     FavouriteProductsComponent,
     NoProductsFoundComponent,
-    BookDisComponent
+    BookDisComponent,
+    ReligigionComponent,
+    HumorComponent,
+    BodyComponent
   ],
   imports: [
     CommonModule , HttpModule, AngularFireModule.initializeApp(environment.firebase),    ToastyModule.forRoot(),

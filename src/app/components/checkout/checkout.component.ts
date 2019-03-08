@@ -20,7 +20,9 @@ import { Router, ActivatedRoute } from "@angular/router";
 import * as firebase from 'firebase';
 import { ToastyService} from "ng2-toasty";
 import { AngularFireAuth } from "angularfire2/auth";
-
+import {
+  AngularFireDatabase,
+  AngularFireList} from "angularfire2/database";
 interface ICartItemWithProduct extends CartItem {
   book: Book;
   totalCost: number;
@@ -56,7 +58,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
                      private router: Router,
                      private deliveryOptionService: DeliveryOptionsDataService,
                      private shoppingCartService: ShoppingCartService,
-                     private authService: AuthService
+                     private authService: AuthService, private db: AngularFireDatabase
 
                      ) {
   }
@@ -68,14 +70,19 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   public setDeliveryOption(option: DeliveryOption): void {
     this.shoppingCartService.setDeliveryOption(option);
   }
-
+  public removeProductFromCart(book: Book): void {
+    this.shoppingCartService.addItem(book, -1);
+  }
   public ngOnInit(): void {
     this.deliveryOptions = this.deliveryOptionService.all();
     this.cart = this.shoppingCartService.get();
     this.cartSubscription = this.cart.subscribe((cart) => {
       this.itemCount = cart.items.map((x) => x.quantity).reduce((p, n) => p + n, 0);
      // this.BookService.getBooks('/books').subscribe((books) => this.books = books);
-      this.BookService.getBooks('/books').subscribe((products) => {
+      // this.BookService.getBooks('/books').subscribe((products) => {
+        
+              this.BookService.getBooksFromFire('/books').subscribe((products) => {
+
         this.books = products;
         this.cartItems = cart.items
                            .map((item) => {
@@ -137,20 +144,41 @@ export class CheckoutComponent implements OnInit, OnDestroy {
         let date = new Date(Date.now()).toLocaleString('en-SE', { timeZone: 'UTC' })
         let userId = this.authService.currentUserId;
   //      this.userService.getUsers.
-        let order = new Order(userId, this.shoppingCartService.retrieve(), this.shoppingCartService.retrieve().grossTotal,  "kr", userDetail, date, this.selectedPaymentMethod);
+        let orderObj = new Order(userId, this.shoppingCartService.retrieve(), this.shoppingCartService.retrieve().grossTotal,  "kr", userDetail, date, this.selectedPaymentMethod);
      //   let order2 = new Order(userId, this.shoppingCartService.retrieve(), this.shoppingCartService.retrieve().grossTotal,  "kr", userDetail, date, this.selectedPaymentMethod);
 
-        console.log(order.userDetail);
+        console.log(orderObj.userDetail);
      //   ('/clients/{uid}')
-     let useruid= this.firebaseAuth.auth.currentUser;     //FirebaseUser user=this.FirebaseAuth.getInstance().getCurrentUser();
+     let userid= this.firebaseAuth.auth.currentUser;     //FirebaseUser user=this.FirebaseAuth.getInstance().getCurrentUser();
     // String useruid=user.getUid();
  //    console.log(this.authService.getLoggedInUser().$key );
      console.log(this.authService.getLoggedInUser());
 
-    firebase.database().ref().child('/clients/' + userId)
-        .update({ title: "New title", body: "This is the new body" });     
+
+     /// get currenet user firebase key
+
+    this.db.list('clients', (ref) =>
+          ref.orderByChild('uid').equalTo(userId)
+        ).query.on("child_added", function (snapshot) {
+          var userKey=snapshot.key;
+          console.log(snapshot.key);
+       //   return snapshot.key;
+      //  firebase.database().ref().child('/clients/' + userKey+"/order")
+       firebase.database().ref().child('/clients/' + userKey)
+          .update({ orderObj});          }, function(errorObject) {
+            console.log("Errors handled: " + errorObject.code);
+          }) ;
+
+
+
+
+
+
+
+    // firebase.database().ref().child('/clients/' + userId)
+    //     .update({ order: order});     
            let orderRef = firebase.database().ref(`orders`);
-        orderRef.push(order).then(() => {
+        orderRef.push(orderObj).then(() => {
           this.shoppingCartService.empty();
           this.router.navigate(['confirmed'], {
             queryParams: {

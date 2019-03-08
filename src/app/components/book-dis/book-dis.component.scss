@@ -1,8 +1,16 @@
+ body{
+   box-sizing: border-box
+ }
+
 .section .section-heading {
     margin-top: 2rem;
     margin-bottom: 4rem;
     
   }
+  .row {
+    max-width: 97% !important;
+  }
+
   .section-heading {
     text-align: center;
   }
@@ -32,8 +40,8 @@
   .card.card-cascade {
     width: 215px;
    //margin-right: 100px;
-    position: relative;
-    left: 30px;
+    position: relativep;
+     left: 140px;
     top:10px
   }
   .card:not([class*="card-outline-"]) {
@@ -70,6 +78,10 @@
   .card .card-body {
     position: relative;
   }
+  .card-body {
+    
+    padding: 1rem;
+}
   .card .rating {
     color: #ffa000;
   }
