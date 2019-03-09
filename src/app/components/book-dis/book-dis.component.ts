@@ -1,4 +1,4 @@
-import { Component, OnInit ,Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BookService } from './../../services/book.service';
 import { ShoppingCartService } from "../../services/shopping-cart.service";
@@ -13,20 +13,20 @@ import { Book } from '../../Book';
 })
 export class BookDisComponent implements OnInit {
   @Input("category") category: String;
-  p:any;
-  searchText:any;
+  p: any;
+  searchText: any;
   books: any;
   currentRate = 8;
 
   constructor(private http: HttpClient, private service: BookService,
-    private shoppingCartService: ShoppingCartService) {}
+    private shoppingCartService: ShoppingCartService) { }
 
   ngOnInit() {
     this.getBooks();
   }
 
   getBooks() {
-    this.books =this.service.getBooks('/books');
+    this.books = this.service.getBooks('/books');
   }
   // getBooks() {
   //   this.service.getBooks('/books').subscribe(res => {
@@ -41,8 +41,8 @@ export class BookDisComponent implements OnInit {
   }
   addFavourite(book: Book) {
     console.log(book);
-		this.shoppingCartService.addFavouriteProduct(book);
-	}
+    this.shoppingCartService.addFavouriteProduct(book);
+  }
   public removeProductFromCart(book: Book): void {
     this.shoppingCartService.addItem(book, -1);
   }
@@ -51,11 +51,11 @@ export class BookDisComponent implements OnInit {
 
     return Observable.create((obs: Observer<boolean>) => {
       const sub = this.shoppingCartService
-                      .get()
-                      .subscribe((cart) => {
-                        obs.next(cart.items.some((i) => i.bookId === book.id));
-                        obs.complete();
-                      });
+        .get()
+        .subscribe((cart) => {
+          obs.next(cart.items.some((i) => i.bookId === book.id));
+          obs.complete();
+        });
       sub.unsubscribe();
     });
   }

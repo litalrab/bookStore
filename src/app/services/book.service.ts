@@ -104,47 +104,46 @@ export class BookService {
   getFromLocalSstorage() {
     // const a:  Observable<any[]>;
     // console.log(JSON.parse(localStorage.getItem(BOOKS_KEY) ));
-    
-    if(JSON.parse(localStorage.getItem(BOOKS_KEY)) === null)
-    {
-      console.log("books" );
+
+    if (JSON.parse(localStorage.getItem(BOOKS_KEY)) === null) {
+      console.log("books");
 
       this.items.subscribe(res => {
         this.saveToLocalSstorage(res);
-          // this.books = res;
-          const books:  Observable<any[]> = JSON.parse(localStorage.getItem(BOOKS_KEY)) ;
-          console.log(books );
-        
-          // return localStorage.getItem(JSON.stringify(BOOKS_KEY)) ? localStorage.getItem(JSON.stringify(BOOKS_KEY)):[];
-          return books;
-        });
-      
+        // this.books = res;
+        const books: Observable<any[]> = JSON.parse(localStorage.getItem(BOOKS_KEY));
+        console.log(books);
+
+        // return localStorage.getItem(JSON.stringify(BOOKS_KEY)) ? localStorage.getItem(JSON.stringify(BOOKS_KEY)):[];
+        return books;
+      });
+
       // this.saveToLocalSstorage(this.items);
-          // return this.items;//
+      // return this.items;//
 
 
     }
     return JSON.parse(localStorage.getItem(BOOKS_KEY));
     // return this.getFromLocalSstorage();
     //    return this.db.list(path).valueChanges();
-    
+
   }
   saveToLocalSstorage(books) {
     // let a:  Observable<any[]>;
-      localStorage.setItem(BOOKS_KEY,JSON.stringify(books) );
+    localStorage.setItem(BOOKS_KEY, JSON.stringify(books));
   }
   getBooksFromFire(path): Observable<any[]> {
-// localStorage.clear();
-   return this.items;//
-  // return this.getFromLocalSstorage();
+    // localStorage.clear();
+    return this.items;//
+    // return this.getFromLocalSstorage();
     //   return this.db.list(path).valueChanges();
   }
-  getBooks(path){
+  getBooks(path) {
 
     // console.log("books" );
 
     // return this.items;//
-     return this.getFromLocalSstorage();
+    return this.getFromLocalSstorage();
 
     // if(this.getFromLocalSstorage() === [])
     // {
@@ -154,8 +153,8 @@ export class BookService {
 
     // }
     // return this.getFromLocalSstorage();
-     //   return this.db.list(path).valueChanges();
-   }
+    //   return this.db.list(path).valueChanges();
+  }
   editBook(id) {
     const uri = 'http://localhost:4000/Books/edit/' + id;
     return this

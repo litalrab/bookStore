@@ -29,12 +29,11 @@
     <div class="row" *ngFor="let item of cartItems">
 
       <!-- <div class="row checkout_row"> -->
-          <div class="col-md-2 text-center mb-2">
-        <a  mdbTooltip="הסר ספר מעגלה" container="body" 
-        (click)="removeProductFromCart(item, 1)">
-        <i class="fa fa-trash"></i>
-      </a>
-    </div>
+      <div class="col-md-2 text-center mb-2">
+        <a mdbTooltip="הסר ספר מעגלה" container="body" (click)="removeProductFromCart(item, 1)">
+          <i class="fa fa-trash"></i>
+        </a>
+      </div>
       <div class="col-md-3 text-center mb-2">
         <img src="{{item.book.url}}" alt="{{item.book.name}}" class="book_image" />
       </div>

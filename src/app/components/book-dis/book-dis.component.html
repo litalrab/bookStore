@@ -1,7 +1,7 @@
 <div class="container-fluid">
-    <!-- <div class="container"> -->
+  <!-- <div class="container"> -->
 
-    <div class="row">
+  <div class="row">
 
     <div class="col-md-4">
       <a routerLink="/shopping-cart" class="btn btn-danger">סל קניות <span class="glyphicon glyphicon-shopping-cart"
@@ -32,12 +32,13 @@
 
 
   <div class="row   ">
-      
+
     <!-- List of Products -->
-    <div class=" mb-2 mr-3" *ngFor='let book of books| filter : category : "category" | filter : searchText: "name" ' cols="5">
+    <div class=" mb-2 mr-3" *ngFor='let book of books| filter : category : "category" | filter : searchText: "name" '
+      cols="5">
       <div class="item">
         <!-- <div class=" mb-r-3 mr-3"> -->
-          <div>
+        <div>
           <!--Card-->
           <div class="card card-cascade wider">
             <!--Card image-->
