@@ -1,7 +1,19 @@
  body{
    box-sizing: border-box
  }
-
+ .row 
+{
+  right: 0px;
+  margin: 30px;
+  // margin-left: 45px;
+}
+.row .category
+{
+  // margin-left: 1px;
+  text-align: right;
+  color:#355C7D;
+  text-shadow: #FC0 1px 0 10px;
+}
 .section .section-heading {
     margin-top: 2rem;
     margin-bottom: 4rem;
@@ -25,6 +37,13 @@
     margin-right: 15%;
     text-align: center;
   }
+  .card-footer{
+    padding: .75rem 2.3rem .75rem .5rem;
+    background-color: rgba(0,0,0,.03);
+    border-top: 1px solid rgba(0,0,0,.125);
+    bottom: 10px;
+    position: absolute;
+  }
   .section img {
     width:300px;
     height:170px;
@@ -41,7 +60,7 @@
     width: 215px;
    //margin-right: 100px;
     position: relativep;
-     left: 140px;
+     left: 50px;
     top:10px
   }
   .card:not([class*="card-outline-"]) {
@@ -77,6 +96,7 @@
   .btn .fa,
   .card .card-body {
     position: relative;
+    height: 230px;
   }
   .card-body {
     

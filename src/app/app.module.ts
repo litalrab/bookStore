@@ -54,7 +54,6 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from '../environments/environment';
 import { LoginComponent } from './components/login/login.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
 import { AngularFireAuth } from "angularfire2/auth";
 import { TranslateComponent } from './components/translate/translate.component';
 import { EnglishComponent } from './components/english/english.component';
@@ -96,7 +95,6 @@ import { BodyComponent } from './components/body/body.component';
     CheckoutComponent,
     OrderConfirmationComponent,
     LoginComponent,
-    NavbarComponent,
     TranslateComponent,
     EnglishComponent,
     FavouriteProductsComponent,

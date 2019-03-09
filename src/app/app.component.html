@@ -71,17 +71,17 @@
   </div>
 </nav>
 
-<input type="checkbox" align="right" class="openSidebarMenu" id="openSidebarMenu">
+<input type="checkbox" align="right" class="openSidebarMenu" id="openSidebarMenu"aria-expanded="true">
 
-<label for="openSidebarMenu" class="sidebarIconToggle">
+<label for="openSidebarMenu" class="sidebarIconToggle"aria-expanded="true">
   <div class="spinner diagonal part-1"></div>
   <div class="spinner horizontal"></div>
   <div class="spinner diagonal part-2"></div>
 </label>
 
-<div id="sidebarMenu">
+<div id="sidebarMenu"aria-expanded="true">
 
-  <ul class="sidebarMenuInner">
+  <ul class="sidebarMenuInner"aria-expanded="true">
 
     <li> <a routerLink="home"> אודות </a> </li>
     <li *ngIf="authService.isAdmin()"> <a routerLink="create"> הוסף ספר </a> </li>

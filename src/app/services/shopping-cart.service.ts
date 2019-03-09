@@ -145,7 +145,7 @@ export class ShoppingCartService {
   public retrieve(): ShoppingCart {
     const cart = new ShoppingCart();
     const storedCart = this.storage.getItem(CART_KEY);
-    console.log(storedCart);
+    // console.log(storedCart);
     if (storedCart) {
       cart.updateFrom(JSON.parse(storedCart));
     }

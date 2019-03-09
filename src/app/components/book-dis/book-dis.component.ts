@@ -47,7 +47,7 @@ export class BookDisComponent implements OnInit {
     this.shoppingCartService.addItem(book, -1);
   }
   public productInCart(book: Book): boolean {
-    console.log(book);
+    // console.log(book);
 
     return Observable.create((obs: Observer<boolean>) => {
       const sub = this.shoppingCartService

@@ -1,36 +1,32 @@
 <div class="container-fluid">
   <!-- <div class="container"> -->
 
-  <div class="row">
+  <div class="row ">
 
-    <div class="col-md-4">
+    <div class="col-sm-1 ">
       <a routerLink="/shopping-cart" class="btn btn-danger">סל קניות <span class="glyphicon glyphicon-shopping-cart"
           aria-hidden="true"></span>
 
       </a>
-    </div>
-    <div class="col-md-4">
-
-      <h1 align="center"> <img align="left" src="assets/img/ספרים-חודש.jpg" alt="image" Height="100px" width="100px">
-        {{category}}</h1>
+      <!-- <input type="text" class="form-control-inline" placeholder="..חפש לפי שם ספר או שם סופר" [(ngModel)]="searchText"> -->
     </div>
 
-    <!-- Search form -->
-
-
-    <div class="col-md-4">
+    <div class="col-sm-3" style="text-align:left">
 
       <input type="text" class="form-control-inline" placeholder="..חפש לפי שם ספר או שם סופר" [(ngModel)]="searchText">
 
     </div>
+    <div class="col-sm-8  category">
 
+      <h1>  {{category}}</h1>
+    </div>
+    <!-- <div class="col-md-4">
 
+      <h1 align="center"> <img align="left" src="assets/img/ספרים-חודש.jpg" alt="image" Height="100px" width="100px">
+        {{category}}</h1>
+    </div> -->
 
   </div>
-
-
-
-
   <div class="row   ">
 
     <!-- List of Products -->
@@ -50,7 +46,7 @@
             </div>
             <!--/.Card image-->
             <!--Card content-->
-            <div class="card-body text-center no-padding">
+            <div class="card-body text-center no-padding ">
               <!--Category & Title-->
               <a class="text-muted">
                 <h5>{{book.name }}</h5>
