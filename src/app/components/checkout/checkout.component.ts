@@ -13,7 +13,7 @@ import { Observable } from "rxjs/Observable";
 import { Subscription } from "rxjs/Subscription";
 import { Book } from "../../Book";
 import { UserDetail } from "../../models/user.module"
-import 'bootstrap/dist/js/bootstrap.bundle';
+// import 'bootstrap/dist/js/bootstrap.bundle';
 import { NgForm, FormGroup, Validators, FormControl } from '@angular/forms';
 import { MatTableDataSource, MatDialog, MAT_DRAWER_DEFAULT_AUTOSIZE } from '@angular/material';
 import { Router, ActivatedRoute } from "@angular/router";
