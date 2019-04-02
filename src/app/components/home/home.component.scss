@@ -11,21 +11,23 @@ body {
 /* Applies to all <h1>...</h1> elements. */
 h1 {
   font-weight: normal;
-  color: rgb(36, 164, 168);
+  color:#355C7D;
   margin: 0px auto;
   position: relative;
   //right: 120px;
   padding-top:0px;
   float:right;
   width:75%;
+  text-shadow: #F8B195 5px 0 20px;
 
 }
 
 h2 {
+  text-shadow: #F8B195 5px 0 20px;
 
   font-weight: normal;
   margin-top: 0px;
-  color: rgb(6, 35, 90);
+  color: #6C5B7B;
   margin: 0px auto;
   position: relative;
  // right: 120px;
@@ -63,10 +65,10 @@ width:80px;
   }
   .lit{
 top:100px;
-    left: 30px;
+    left: 700px;
     border: 4mm ridge rgba(173, 169, 175, 0.6);
     text-align: right;
-    font-size: 20px;
+    font-size: 30px;
   //  margin: 20px auto;
     position: relative;
 

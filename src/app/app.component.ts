@@ -11,22 +11,16 @@ declare var $: any;
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit  {
-  navbarOpen ;
+export class AppComponent  {
+
 
   constructor(
     public authService: AuthService,
     private router: Router,
     public ShoppingCartService: ShoppingCartService  ) {}
 
-  ngOnInit() {
-    this.navbarOpen = false;
 
-  }
- 
-  // toggleNavbar() {
-  //   this.navbarOpen = !this.navbarOpen;
-  // }
+
   logout() {
     this.authService.logout();
     this.router.navigate(["/"]);

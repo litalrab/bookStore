@@ -63,6 +63,7 @@ import { BookDisComponent } from './components/book-dis/book-dis.component';
 import { ReligigionComponent } from './components/religigion/religigion.component';
 import { HumorComponent } from './components/humor/humor.component';
 import { BodyComponent } from './components/body/body.component';
+import { BookCardComponent } from './components/book-dis/book-card/book-card.component';
 
 
 @NgModule({
@@ -102,7 +103,8 @@ import { BodyComponent } from './components/body/body.component';
     BookDisComponent,
     ReligigionComponent,
     HumorComponent,
-    BodyComponent
+    BodyComponent,
+    BookCardComponent
   ],
   imports: [
     CommonModule , HttpModule, AngularFireModule.initializeApp(environment.firebase),    ToastyModule.forRoot(),

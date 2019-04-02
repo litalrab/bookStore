@@ -174,7 +174,19 @@ export class ShoppingCartService {
 	/*
    ----------  Favourite Product Function  ----------
   */
+ public productInFav(book: Book): boolean {
+ 
+  let ans=false;
+  const books: Book[] =  JSON.parse(localStorage.getItem(FAV_KEY));
 
+  for (let i = 0; i < books.length; i++) {
+    if (books[i].id === book.id) {
+      ans=true;
+            break;
+    }
+  }
+  return ans;
+ }
 
   // Adding New product to favourite if logged else to localStorage
   public addFavouriteProduct(data: Book): void {
