@@ -11,17 +11,18 @@ try {admin.initializeApp(functions.config().firebase)} catch(e) {
 
 // 3. Google Cloud environment variable used:
 // firebase functions:config:set postmark.key="API-KEY-HERE"
-const postmarkKey = functions.config().postmark.key
-const mailTransport = nodemailer.createTransport(postmarkTransport({
-        auth: {
-                apiKey: postmarkKey
-        }
-}))
+
+// const postmarkKey = functions.config().postmark.key
+// const mailTransport = nodemailer.createTransport(postmarkTransport({
+//         auth: {
+//                 apiKey: postmarkKey
+//         }
+// }))
 var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-           user: 'user@gmail.com',
-           pass: 'hfc'
+           user: 'geshemshelsfarim@gmail.com',
+           pass: 'kbook4567'
        }
    });
 /*exports.dbCreate = functions.database.ref('/path').onCreate((snap, context) => {
@@ -29,27 +30,44 @@ var transporter = nodemailer.createTransport({
   });*/
 // 4. Watch for new users
 //exports = module.exports = functions.database.ref('/clients').onCreate((event) => {
-exports = module.exports = functions.database.ref('/clients/{uid}').onCreate((snap, context) =>{
-    const user = snap.val(); // data that was created
-    console.log('event.data: '+snap);
-    console.log('snapshot: '+user.name);
+exports = module.exports = functions.database.ref('/clients/{uid}').onWrite((snap, context) =>{
+  //  const user = snap.val(); // data that was created
+   
+   
+    const original = snap.after.val();
+   
+    console.log('event.data: '+original);
+    console.log('snapshot: '+original.name);
 
       //  const snapshot = event.data
        // const user = snapshot.val()
         // Use nodemailer to send email
-        return sendEmail(user);
+        return sendEmail(original);
     });
 //})
 
 function sendEmail(user) {
-    console.log('user email : '+user.email );
-    console.log('user email is : ${user.email}');
+    console.log('user isAdmin: : '+user.isAdmin );
+    console.log(`user email is : ${user.email}`);
+    console.log(`user order is : ${user.orderObj}`);
+    console.log('user order : '+user.orderObj );
+    for (const key in user.orderObj) {
+      if (user.orderObj.hasOwnProperty(key)) {
+        const element = user.orderObj[key];
+        console.log('user order key : '+element );
+
+      }
+    }
+
         // 5. Send welcome email to new users
         const mailOptions = {
                 //from: ' dave@gmail.com',
-                to: 'litalrab@gamil.com',
+                to: 'geshemshelsfarim@gamil.com',
                 subject: 'Welcome!',
-                html: '<p>Your html here</p>'// plain text body
+                html: ` <p>Your html here</p>
+                user order is : ${user.orderObj}
+                user email is : ${user.email}`
+               // plain text body
         }
         // 6. Process the sending of this email via nodemailer
         return transporter.sendMail(mailOptions)
